@@ -1,0 +1,44 @@
+﻿<Window x:Class="ResolutionLocator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ResolutionLocator"
+        mc:Ignorable="d"
+        Title="Главное меню" Height="700" Width="1400"
+        FontFamily="v_DistrictTF-Regular" FontSize="16"
+        Background="#FFE8ECFF">
+    <Grid>
+        <DataGrid x:Name="PhotoGrid"
+                  Margin="15,15,15,70"
+                  AutoGenerateColumns="False"
+                  MinRowHeight="22"
+                  Background="White"
+                  RowBackground="#FFFFF1E2" 
+                  AlternatingRowBackground="#FFFFEAD3"
+                  VerticalGridLinesBrush="#3A4352"
+                  HorizontalGridLinesBrush="#3A4352" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding [0]}" Header="Номер" Width="90"/>
+                <DataGridTextColumn Binding="{Binding [1]}" Header="Имя" Width="*"/>
+                <DataGridTextColumn Binding="{Binding [2]}" Header="Разрешение" Width="130"/>
+                <DataGridTextColumn Binding="{Binding [3]}" Header="Соотношение" Width="180"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <local:SpinLoader x:Name="SpinLoader" Visibility="Hidden"
+                          Margin="0,0,60,55"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Bottom" />
+
+        <local:Controller x:Name="Choose" 
+                           Grid.Row="3"
+                           Margin="0,0,15,15" 
+                           GlobalWidth="202" FigureWidth="198"
+                           Purpose="Action"                      
+                           Command="Выбрать файл из папки"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           MouseLeftButtonDown="Choose_MouseLeftButtonDown" />
+    </Grid>
+</Window>
